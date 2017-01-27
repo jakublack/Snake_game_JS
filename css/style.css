@@ -1,8 +1,19 @@
-.area{
+.btn{
     display: flex;
     justify-content: center;
 }
+button.start{
+    padding: 10px;
+    background: #2F2F2F;
+    border-radius: 20px;
+    width: 10%;
+    color: white;
+    font-size: 24px;
+    box-shadow: 2px 2px 2px #ABABAB;
+}
 
-#snakeArea{
-    border: 1px solid black;
+button.start:hover{
+    cursor: pointer;
+    background: #000;
+    
 }
