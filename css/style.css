@@ -17,3 +17,6 @@ button.start:hover{
     background: #000;
     
 }
+.hide{
+    display: none;
+}
