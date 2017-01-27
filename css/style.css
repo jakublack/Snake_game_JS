@@ -1,0 +1,8 @@
+.area{
+    display: flex;
+    justify-content: center;
+}
+
+#snakeArea{
+    border: 1px solid black;
+}
