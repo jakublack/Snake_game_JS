@@ -164,7 +164,7 @@ canvas.addEventListener("touchstart",function(e){
    
 });
 
-canvas.addEventListener("touchmove",function(e){
+canvas.addEventListener("touchend",function(e){
     e.preventDefault()
     endX = e.changedTouches[0].pageX;
     endY = e.changedTouches[0].pageY;
