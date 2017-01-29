@@ -110,8 +110,7 @@ var allDraw = (function () {
            
             
         }
-        console.log(food.x);
-        console.log(food.y);
+       
 
         for (var i=0; i>snake.length; i++) {
             var snakeX = snake[i].x;
@@ -148,9 +147,53 @@ btn.addEventListener("click", function(){
     infoScore.classList.toggle("hide");
     allDraw.init();
 });
+
+//for mobile to touch
+var startX;
+var startY;
+var endX;
+var endY;
+var resultX;
+var resultY;
+var direction;
+
+canvas.addEventListener("touchstart",function(e){
+    e.preventDefault()
+    startX = e.changedTouches[0].pageX;
+    startY = e.changedTouches[0].pageY;
+});
+
+canvas.addEventListener("touchmove",function(e){
+    e.preventDefault()
+    endX = e.changedTouches[0].pageX;
+    endY = e.changedTouches[0].pageY;
+    
+    resultX = startX - endX
+    resultY = startY - endY
+    
+    if (resultX<0 && direction != 'left'){
+        direction = 'right'
+        console.log("prawo")
+    }
+    else if (resultX>0 && direction != 'right'){
+        direction = 'left'
+        console.log("lewo")
+    }
+    else if(resultY>0 && direction != 'down'){
+        direction = 'up'
+        console.log("gora")
+    }
+    else if(resultY<0 && direction != 'up'){
+        direction = 'down'
+        console.log("dol")
+    }
+        
+});
+
 document.onkeydown = function(event) {
     keyCode = window.event.keyCode; 
     keyCode = event.keyCode;
+
 
     switch(keyCode) {
         case 37: 
