@@ -1,11 +1,18 @@
+var btnStart = document.querySelector(".start");
+var infoScore = btnStart.nextElementSibling
+var scoreUpdate = document.querySelector(".score");
 var canvas = document.getElementById('snakeArea');
-var btnStart = document.querySelector(".btn");
 var ctx = canvas.getContext('2d');
 var snakeSize = 15; 
-var w = window.innerWidth -10;
-var h = window.innerHeight -50;
+var w = 350;
+var h = 350;
 var snake;
 var food;
+//var speed =100;
+var score = 0;
+var score_info = 0;
+//var speed_info = 1
+
 
 canvas.setAttribute("width",w);
 canvas.setAttribute("height",h);
@@ -28,11 +35,18 @@ var allDraw = (function () {
             snake.push({x:i, y:0});
         }  
     }
+//    var scoreInfo = function() {
+//        score_info = "Score: " + score;
+//        ctx.fillStyle = 'red';
+//        ctx.fillText(score_info, w/2.5, 10);
+//    }
     
     var mainDraw = function(){
         //bg black
         ctx.fillStyle = 'black';
         ctx.fillRect(0, 0, w, h);
+        
+        
       
         var snakeX = snake[0].x;
         var snakeY = snake[0].y;
@@ -50,8 +64,11 @@ var allDraw = (function () {
             snakeY++; 
         }
         //game over
-        if (snakeX == -1 || snakeX == w/snakeSize || snakeY == -1 || snakeY == h/snakeSize || hitSnake(snakeX, snakeY, snake)) {
+        if (snakeX == -1 || snakeX > w/snakeSize || snakeX > w || snakeY == -1 || snakeY > h/snakeSize || hitSnake(snakeX, snakeY, snake)) {
             //restart game
+            score = 0;
+            speed_info =1;
+            infoScore.classList.toggle("hide");
             btnStart.classList.toggle("hide");
             ctx.clearRect(0,0,w,h);
             gameloop = clearInterval(gameloop);
@@ -61,7 +78,12 @@ var allDraw = (function () {
         if(snakeX == food.x && snakeY == food.y) {
             var tail = {x: snakeX, y: snakeY}; //Create a new head instead of moving the tail
               //Create new food
-              createFood(); 
+            createFood();
+            score +=10
+//            if (score>=speed_info*100){
+//                speed-=30
+//                speed_info++
+//            }
         } 
         else {
             var tail = snake.pop(); 
@@ -75,26 +97,32 @@ var allDraw = (function () {
             lineSnake(snake[i].x, snake[i].y);
         } 
 
-        foodToEat(food.x, food.y); 
+        foodToEat(food.x, food.y);
+    
+        scoreUpdate.innerText = score ;
     }
 
     var createFood = function() {
         food = {
-            x: Math.floor((Math.random() * 30) + 1),
-            y: Math.floor((Math.random() * 30) + 1)
+            x: Math.floor((Math.random() * 20) + 1),
+            y: Math.floor((Math.random() * 20) + 1)
+            
+           
+            
         }
+        console.log(food.x);
+        console.log(food.y);
 
         for (var i=0; i>snake.length; i++) {
             var snakeX = snake[i].x;
             var snakeY = snake[i].y;
 
             if (food.x===snakeX && food.y === snakeY || food.y === snakeY && food.x===snakeX) {
-                food.x = Math.floor(Math.random + 1);
-                food.y = Math.floor(Math.random + 1);
+                food.x = Math.floor((Math.random() * 20) + 1);
+                food.y = Math.floor((Math.random() * 20) + 1);
             }
         }
     }
-
       var hitSnake = function(x, y, array) {
           for(var i = 0; i < array.length; i++) {
             if(array[i].x === x && array[i].y === y)
@@ -104,7 +132,7 @@ var allDraw = (function () {
       }
 
       var init = function(){
-          direction = 'down';
+          direction = 'right';
           startSnake();
           createFood();
           gameloop = setInterval(mainDraw, 100);
@@ -117,6 +145,7 @@ var allDraw = (function () {
 var btn = document.querySelector('.start');
 btn.addEventListener("click", function(){ 
     btnStart.classList.toggle("hide");
+    infoScore.classList.toggle("hide");
     allDraw.init();
 });
 document.onkeydown = function(event) {
