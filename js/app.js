@@ -171,10 +171,7 @@ canvas.addEventListener("touchend",function(e){
     
     resultX = startX - endX
     resultY = startY - endY
-    
-    console.log(resultX)
-    console.log(resultY)
-    
+  
     if (resultX<0 && direction != 'left'){
         direction = 'right'
         console.log("prawo")

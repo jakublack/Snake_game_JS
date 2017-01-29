@@ -1,8 +1,13 @@
 Game Snake JS 
 
-first step is done - snake walk and eat :) 
+Snake game write in JS - you can control on desktop with keypress and on mobile on the touch.
 
-need to add:
-- controle for touch. - mobile 
+Use technologies:
 
-in progress but for now you can try: https://jakublack.github.io/Snake_game_JS/
+- HTML5,
+- JavaScript,
+- CSS3.
+
+Enjoy: https://jakublack.github.io/Snake_game_JS/
+
+JG
