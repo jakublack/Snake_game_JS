@@ -13,9 +13,9 @@ var score = 0;
 var score_info = 0;
 //var speed_info = 1
 
-
-canvas.setAttribute("width",w);
-canvas.setAttribute("height",h);
+//
+//canvas.setAttribute("width",w);
+//canvas.setAttribute("height",h);
 
 var allDraw = (function () { 
 
