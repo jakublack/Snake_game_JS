@@ -158,18 +158,22 @@ var resultY;
 var direction;
 
 canvas.addEventListener("touchstart",function(e){
-    e.preventDefault()
+    
     startX = e.changedTouches[0].pageX;
     startY = e.changedTouches[0].pageY;
+    e.preventDefault()
 });
 
-canvas.addEventListener("touchmove",function(e){
-    e.preventDefault()
+canvas.addEventListener("touchend",function(e){
+    
     endX = e.changedTouches[0].pageX;
     endY = e.changedTouches[0].pageY;
     
     resultX = startX - endX
     resultY = startY - endY
+    
+    console.log(resultX)
+    console.log(resultY)
     
     if (resultX<0 && direction != 'left'){
         direction = 'right'
@@ -187,7 +191,7 @@ canvas.addEventListener("touchmove",function(e){
         direction = 'down'
         console.log("dol")
     }
-        
+    e.preventDefault()
 });
 
 document.onkeydown = function(event) {
