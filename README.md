@@ -1,6 +1,6 @@
 Game Snake JS 
 
-Snake game write in JS - you can control on desktop with keypress and on mobile on the touch.
+Snake game write in JS - you can control on desktop with keypress and on mobile by the touch.
 
 Use technologies:
 
