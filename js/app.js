@@ -1,17 +1,17 @@
-var btnStart = document.querySelector(".start");
-var infoScore = btnStart.nextElementSibling
-var scoreUpdate = document.querySelector(".score");
-var canvas = document.getElementById('snakeArea');
-var ctx = canvas.getContext('2d');
-var snakeSize = 15; 
-var w = 350;
-var h = 350;
-var snake;
-var food;
-//var speed =100;
-var score = 0;
-var score_info = 0;
+let btnStart = document.querySelector(".start"),
+    infoScore = btnStart.nextElementSibling,
+    scoreUpdate = document.querySelector(".score"),
+    canvas = document.getElementById('snakeArea'),
+    ctx = canvas.getContext('2d'),
+    snakeSize = 15, 
+    w = 350,
+    h = 350,
+    snake,
+    food,
+    score = 0,
+    score_info = 0;
 //var speed_info = 1
+//var speed =100;
 
 //
 //canvas.setAttribute("width",w);
@@ -29,18 +29,12 @@ var allDraw = (function () {
         ctx.fillRect(x*snakeSize, y*snakeSize, snakeSize, snakeSize);
     }
     var startSnake = function() {
-        var length = 5;
+        let length = 5;
         snake = [];
         for (var i = length-1; i>=0; i--) {
             snake.push({x:i, y:0});
         }  
-    }
-//    var scoreInfo = function() {
-//        score_info = "Score: " + score;
-//        ctx.fillStyle = 'red';
-//        ctx.fillText(score_info, w/2.5, 10);
-//    }
-    
+    }    
     var mainDraw = function(){
         //bg black
         ctx.fillStyle = 'black';
@@ -93,7 +87,7 @@ var allDraw = (function () {
 
             snake.unshift(tail); 
 
-        for(var i = 0; i < snake.length; i++) {
+        for(let i = 0; i < snake.length; i++) {
             lineSnake(snake[i].x, snake[i].y);
         } 
 
@@ -102,7 +96,7 @@ var allDraw = (function () {
         scoreUpdate.innerText = score ;
     }
 
-    var createFood = function() {
+    let createFood = function() {
         food = {
             x: Math.floor((Math.random() * 20) + 1),
             y: Math.floor((Math.random() * 20) + 1)
@@ -112,7 +106,7 @@ var allDraw = (function () {
         }
        
 
-        for (var i=0; i>snake.length; i++) {
+        for (let i=0; i>snake.length; i++) {
             var snakeX = snake[i].x;
             var snakeY = snake[i].y;
 
@@ -122,15 +116,15 @@ var allDraw = (function () {
             }
         }
     }
-      var hitSnake = function(x, y, array) {
-          for(var i = 0; i < array.length; i++) {
+      let hitSnake = function(x, y, array) {
+          for(let i = 0; i < array.length; i++) {
             if(array[i].x === x && array[i].y === y)
             return true;
           } 
           return false;
       }
 
-      var init = function(){
+      let init = function(){
           direction = 'right';
           startSnake();
           createFood();
@@ -141,7 +135,7 @@ var allDraw = (function () {
       }; 
 }());
 
-var btn = document.querySelector('.start');
+let btn = document.querySelector('.start');
 btn.addEventListener("click", function(){ 
     btnStart.classList.toggle("hide");
     infoScore.classList.toggle("hide");
@@ -149,13 +143,7 @@ btn.addEventListener("click", function(){
 });
 
 //for mobile to touch
-var startX;
-var startY;
-var endX;
-var endY;
-var resultX;
-var resultY;
-var direction;
+let startX, startY, endX, endY, resultX, resultY, direction;
 
 canvas.addEventListener("touchstart",function(e){
     e.preventDefault()
